@@ -1,9 +1,18 @@
-export default function HomePage(){
+export default function HomePage(props){
+
+    const {products } = props; 
     return(
         <ul>
-        <li>product 1</li>
-        <li>product 2</li>
-        <li>product 3</li>
+        {products.map(products => (<li key = {products.id}>
+            {products.title}</li>
+        ))}
         </ul>
     )
 }
+
+export async function getStaticProps(){
+    return {props:{
+        products: [{id: 'p1', title: 'product1'}],
+    },
+};
+} 
